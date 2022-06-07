@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"outDir": "dist",
+		"target": "ES2022",
+		"module": "commonjs",
+		"newLine": "lf"
+	},
+	"include": [
+		"src/**/*"
+	]
+}
