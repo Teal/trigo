@@ -10,6 +10,26 @@ export function optimizeSVG(svg: string, options: OptimizeSVGOptions = { min: tr
 	const plugins: Plugin[] = []
 	if (options.removeTitle) {
 		plugins.push("removeTitle")
+		plugins.push({
+			name: "keepTitle",
+			type: "perItem",
+			fn(node: any) {
+				if (node.attributes?.title) {
+					node.children.push({
+						type: 'element',
+						name: 'title',
+						attributes: {},
+						children: [
+							{
+								type: 'text',
+								value: node.attributes.title
+							}
+						]
+					})
+					delete node.attributes.title
+				}
+			}
+		})
 	}
 	if (options.removeColor) {
 		plugins.push({
@@ -97,21 +117,21 @@ export function optimizeSVG(svg: string, options: OptimizeSVGOptions = { min: tr
 		plugins.push({
 			name: "cleanRoot",
 			type: "perItem",
-			fn(item: any) {
+			fn(node: any) {
 				if (
-					item.isElem(["svg"]) &&
-					!item.hasAttr("viewBox") &&
-					item.hasAttr("width") &&
-					item.hasAttr("height") &&
-					item.attr("width").value.endsWith("px") &&
-					item.attr("height").value.endsWith("px")
+					node.isElem(["svg"]) &&
+					!node.hasAttr("viewBox") &&
+					node.hasAttr("width") &&
+					node.hasAttr("height") &&
+					node.attr("width").value.endsWith("px") &&
+					node.attr("height").value.endsWith("px")
 				) {
-					const width = parseFloat(item.attr("width").value.replace(/px$/, ""))
-					const height = parseFloat(item.attr("height").value.replace(/px$/, ""))
-					item.removeAttr("width")
-					item.removeAttr("height")
+					const width = parseFloat(node.attr("width").value.replace(/px$/, ""))
+					const height = parseFloat(node.attr("height").value.replace(/px$/, ""))
+					node.removeAttr("width")
+					node.removeAttr("height")
 					const viewBox = `0 0 ${width} ${height}`
-					item.addAttr({
+					node.addAttr({
 						name: "viewBox",
 						prefix: "",
 						local: "viewBox",
