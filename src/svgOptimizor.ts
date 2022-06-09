@@ -229,10 +229,10 @@ export function translate(height = 0, minWidth = 0, offsetY = 0, offsetX = 0) {
 							node.attributes[attrKey] = (node.attributes[attrKey] * context.scale).toString()
 						}
 						if (dxAttrs.indexOf(attrKey) > -1) {
-							node.attributes[attrKey] = (node.attributes[attrKey] + context.offsetX).toString()
+							node.attributes[attrKey] = (+node.attributes[attrKey] + context.offsetX).toString()
 						}
 						if (dyAttrs.indexOf(attrKey) > -1) {
-							node.attributes[attrKey] = (node.attributes[attrKey] + context.offsetY).toString()
+							node.attributes[attrKey] = (+node.attributes[attrKey] + context.offsetY).toString()
 						}
 					}
 					break
@@ -242,8 +242,8 @@ export function translate(height = 0, minWidth = 0, offsetY = 0, offsetX = 0) {
 						.split(/\s+/)
 						.map((point: any) => {
 							const pair = point.split(",")
-							pair[0] = pair[0] * context.scale + context.offsetX
-							pair[1] = pair[1] * context.scale + context.offsetY
+							pair[0] = +pair[0] * context.scale + context.offsetX
+							pair[1] = +pair[1] * context.scale + context.offsetY
 							return pair.join(",")
 						})
 						.join(" ")
