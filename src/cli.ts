@@ -21,6 +21,9 @@ const commandLineOptions: { [option: string]: CommandLineOption } = {
 		argument: "size",
 		description: "Resize icons to specific height"
 	},
+	"--min": {
+		description: "Optimize size of svg"
+	},
 	"--minWidth": {
 		argument: "size",
 		description: "Resize icons to specific width"

@@ -1,6 +1,6 @@
 {
   "name": "trigo",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": "https://github.com/Teal/trigo",
   "description": "An icon solution for web",
   "license": "MIT",
@@ -14,16 +14,17 @@
   "dependencies": {
     "svgo": "^2.8.0",
     "svgpath": "^2.5.0",
-    "tutils": "^2.2.2"
+    "tutils": "^2.3.4"
   },
   "devDependencies": {
-    "@types/node": "^17.0.40",
+    "@types/node": "^18.0.6",
     "@types/svgo": "^2.6.3",
-    "ts-node": "^10.8.1",
-    "typescript": "^4.7.3"
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
   },
   "scripts": {
     "prepublishOnly": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
     "trigo": "ts-node -T ./src/cli.ts",
     "test": "npm run trigo test/**/*.svg -- --removeRoot --height 14 --removeColor --out test/__out.ts"
   }
