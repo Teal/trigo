@@ -23,8 +23,7 @@ console.log(iconName)
 ## Options
 ```
 -o, --out <path>       Specific the output file path
---tpl <content>        Specific the output template. Support variables: $name, $svg, $string, $path, $viewBox,
-						$markdown
+--tpl <content>        Specific the output template. Support variables: $name, $svg, $string, $path, $viewBox, $markdown
 --postfix <name>       Specific the variable name postfix
 --height <size>        Resize icons to specific height
 --min                  Optimize size of svg
