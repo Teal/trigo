@@ -79,7 +79,7 @@ export function optimizeSVG(svg: string, options: OptimizeSVGOptions = { min: tr
 			"convertTransform",
 			"removeUnknownsAndDefaults",
 			"removeNonInheritableGroupAttrs",
-			"removeUselessStrokeAndFill",
+			// "removeUselessStrokeAndFill",
 			"removeUnusedNS",
 			"cleanupIDs",
 			"cleanupNumericValues",
